@@ -1,37 +1,23 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
 import ProductList from "./components/ProductList";
-import CartItem from "./components/CartItem";
-import AboutUs from "./components/AboutUs";
 import "./App.css";
 
-function Home() {
+function App() {
+  const [showProducts, setShowProducts] = useState(false);
+
   return (
     <div className="landing">
-      <div className="overlay">
-        <h1>Paradise Nursery</h1>
-        <p>
-          Paradise Nursery is your one-stop destination for healthy, beautiful
-          houseplants. We carefully curate indoor and outdoor plants to bring
-          freshness, calm, and greenery into your living spaces.
-        </p>
-        <Link to="/plants">
-          <button className="get-started">Get Started</button>
-        </Link>
-      </div>
+      {!showProducts ? (
+        <>
+          <h1>Paradise Nursery</h1>
+          <button onClick={() => setShowProducts(true)}>
+            Get Started
+          </button>
+        </>
+      ) : (
+        <ProductList />
+      )}
     </div>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/plants" element={<ProductList />} />
-        <Route path="/cart" element={<CartItem />} />
-        <Route path="/about" element={<AboutUs />} />
-      </Routes>
-    </Router>
   );
 }
 
