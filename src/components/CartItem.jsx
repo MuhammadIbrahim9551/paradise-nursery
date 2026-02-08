@@ -1,10 +1,6 @@
 import "./CartItem.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  increaseQuantity,
-  decreaseQuantity,
-  removeItem,
-} from "../store/CartSlice";
+import { updateQuantity, removeItem } from "../store/CartSlice";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
